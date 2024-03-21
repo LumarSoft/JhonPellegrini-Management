@@ -2,7 +2,8 @@
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { singInWhitEmailAndPassword } from "@/shared/services/firebase/login/login";
+import { useUserStore } from "@/shared/context/userStore";
+import { loginWithMailAndPassword } from "@/shared/services/firebase/login/login";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 
@@ -11,10 +12,12 @@ export const LoginCard = () => {
   const [password, setPassword] = useState("");
 
   const router = useRouter();
+  const { setUser } = useUserStore();
 
   const handleSubmit = async () => {
-    const user = await singInWhitEmailAndPassword(email, password);
+    const user = await loginWithMailAndPassword(email, password);
     if (user) {
+      setUser(user.email ?? "");
       router.push("/dashboard");
     }
   };

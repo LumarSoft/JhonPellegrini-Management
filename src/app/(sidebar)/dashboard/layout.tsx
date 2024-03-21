@@ -1,5 +1,5 @@
-"use client";
 import SidebarComponent from "@/shared/components/sidebar/SidebarComponent";
+import { ValidateAuth } from "@/shared/services/validateAuth";
 
 export default function DashboardLayout({
   children,
@@ -7,9 +7,11 @@ export default function DashboardLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <div className="w-screen h-screen flex">
-      <SidebarComponent />
-      {children}
-    </div>
+    <ValidateAuth>
+      <div className="w-screen h-screen flex">
+        <SidebarComponent />
+        {children}
+      </div>
+    </ValidateAuth>
   );
 }
