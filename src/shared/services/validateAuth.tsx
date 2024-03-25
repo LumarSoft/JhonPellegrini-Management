@@ -8,11 +8,12 @@ export const ValidateAuth = ({ children }: { children: React.ReactNode }) => {
   const router = useRouter();
 
   useEffect(() => {
-    if (!user) {
+    if (!user || user === "") {
       router.push("/");
+    } else {
+      router.push("/dashboard");
     }
-  }, []);
+  }, [user, router]);
 
-  // Si el usuario está autenticado, renderiza los hijos
   return <>{children}</>;
 };
