@@ -28,7 +28,8 @@ export default function RootLayout({
           fontSans.variable
         )}
       >
-        <ValidateAuth>{children}</ValidateAuth>
+        {children}
+        {/* <ValidateAuth></ValidateAuth> */}
       </body>
     </html>
   );
