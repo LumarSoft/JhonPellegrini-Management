@@ -48,7 +48,7 @@ export const InputExcel = () => {
 
     try {
       const response = await axios.post(
-        "http://149.50.137.144:3002/send-message",
+        "//149.50.137.144:3002/send-message",
         items,
         {
           headers: {
