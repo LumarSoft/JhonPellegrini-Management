@@ -21,8 +21,8 @@ export const LoginCard = () => {
     if (!email || !password) {
       return toast.error("Por favor, rellene todos los campos");
     }
-    
-    const user = await loginWithMailAndPassword(email, password);
+
+    const user = await loginWithMailAndPassword(email.trim(), password.trim());
     if (user) {
       setUser(user.email ?? "");
       router.push("/dashboard");
