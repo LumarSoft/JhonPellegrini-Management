@@ -12,7 +12,7 @@ import {
 } from "@/components/ui/alert-dialog";
 import { useUserStore } from "@/shared/context/userStore";
 import { useRouterHelper } from "@/shared/hooks/useRouterHelper";
-import Link from "next/link";
+import { Link } from "next-view-transitions";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -24,9 +24,12 @@ import { IRoutes } from "@/shared/constant/routes";
 import { RiLogoutBoxLine } from "react-icons/ri";
 
 export const SidebarComponent = () => {
-  const routesWithoutHome = useRouterHelper().getRouteExcluding("Home");
   const actualRoute = useRouterHelper().getCurrentRoute();
+  const routesForDashboard =
+    useRouterHelper().getOneRoute("/dashboard")?.subroutes;
   const { clearUser } = useUserStore();
+  const dashboardRoute = useRouterHelper().getOneRoute("/dashboard");
+  console.log(actualRoute);
 
   return (
     <section>
@@ -35,7 +38,7 @@ export const SidebarComponent = () => {
         <h1 className="text-2xl tracking-tighter">{actualRoute?.name}</h1>
         <div className="flex items-center gap-4">
           <LogoutModal clearUser={clearUser} />
-          <DropDown routes={routesWithoutHome} />
+          <DropDown routes={routesForDashboard ?? []} />
         </div>
       </div>
 
@@ -43,17 +46,30 @@ export const SidebarComponent = () => {
       <div className="h-screen w-80 border-r hidden lg:flex flex-col py-10 gap-4">
         <h4 className="font-bold text-3xl text-center">Opciones</h4>
         <div className="flex flex-col h-full ">
-          {routesWithoutHome.map((route, index) => (
+          {dashboardRoute && (
             <Link
-              href={route.path}
-              key={index}
+              href={dashboardRoute?.path}
               className={`${
-                actualRoute?.name === route.name ? "border border-x-0" : ""
+                actualRoute?.name === dashboardRoute.name
+                  ? "border border-x-0"
+                  : ""
               } px-4 py-4`}
             >
-              {route.name}
+              {dashboardRoute?.name}
             </Link>
-          ))}
+          )}
+          {routesForDashboard &&
+            routesForDashboard.map((route, index) => (
+              <Link
+                href={route.path}
+                key={index}
+                className={`${
+                  actualRoute?.name === route.name ? "border border-x-0" : ""
+                } px-4 py-4`}
+              >
+                {route.name}
+              </Link>
+            ))}
         </div>
         <LogoutModal clearUser={clearUser} />
       </div>

@@ -5,7 +5,19 @@ export const useRouterHelper = () => {
   const pathname = usePathname();
 
   const getCurrentRoute = () => {
-    return ROUTES.find((route) => route.path === pathname);
+    const route = ROUTES.find((route) => route.path === pathname);
+    if (route) return route;
+
+    for (const parentRoute of ROUTES) {
+      if (parentRoute.subroutes) {
+        const subroute = parentRoute.subroutes.find(
+          (subroute) => pathname.startsWith(parentRoute.path) && pathname.includes(subroute.path)
+        );
+        if (subroute) return subroute;
+      }
+    }
+
+    return null;
   };
 
   const getRouteExcluding = (routeToExclude: string) => {
@@ -16,9 +28,5 @@ export const useRouterHelper = () => {
     return ROUTES.find((route) => route.path === routeName);
   };
 
-  return {
-    getCurrentRoute,
-    getRouteExcluding,
-    getOneRoute,
-  };
+  return { getCurrentRoute, getRouteExcluding, getOneRoute };
 };

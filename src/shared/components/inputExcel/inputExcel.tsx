@@ -48,7 +48,7 @@ export const InputExcel = () => {
 
     try {
       const response = await axios.post(
-        "http://149.50.137.144:3002/send-message",
+        "//149.50.137.144:3002/send-message",
         items,
         {
           headers: {
@@ -68,7 +68,7 @@ export const InputExcel = () => {
   };
 
   return (
-    <div className="w-96 border px-4 py-4 rounded flex flex-col gap-4">
+    <div className="w-96 border px-4 py-4 rounded flex flex-col gap-4 text-white">
       <Label className="text-start">Inserte Excel aquí</Label>
       <Input
         type="file"

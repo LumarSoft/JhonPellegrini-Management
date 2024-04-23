@@ -1,5 +1,5 @@
-import { HomeModule } from "@/modules/home";
+import { LoginModule } from "@/modules/login";
 
 export default function Home() {
-  return <HomeModule />;
+  return <LoginModule />;
 }
