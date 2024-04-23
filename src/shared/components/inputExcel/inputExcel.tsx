@@ -8,7 +8,7 @@ import { Button } from "@/components/ui/button";
 import { toast, ToastContainer } from "react-toastify";
 import axios from "axios";
 
-export const InputExcel = () => {
+export const InputExcel = ({ URLPost }: { URLPost: string }) => {
   const [items, setItems] = useState<any[]>([]);
 
   const readExcel = (file: File) => {
@@ -25,7 +25,10 @@ export const InputExcel = () => {
         const wb = XLSX.read(bufferArray, { type: "buffer" });
         const wsname = wb.SheetNames[0];
         const ws = wb.Sheets[wsname];
-        const data = XLSX.utils.sheet_to_json(ws);
+
+        const dataRange = XLSX.utils.decode_range("A4:Z1000");
+
+        const data = XLSX.utils.sheet_to_json(ws, { range: dataRange });
 
         resolve(data);
       };
@@ -48,7 +51,7 @@ export const InputExcel = () => {
 
     try {
       const response = await axios.post(
-        "//149.50.137.144:3002/send-message",
+        `http://localhost:3002/${URLPost}`,
         items,
         {
           headers: {
