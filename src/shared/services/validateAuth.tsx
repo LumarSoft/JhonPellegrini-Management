@@ -1,30 +1,29 @@
 "use client";
 import { useRouter } from "next/navigation";
-import { useUserStore } from "../context/userStore";
 import React, { useEffect, useState } from "react";
+import { useUserStore } from "../context/userStore";
+import SyncLoader from "react-spinners/SyncLoader";
 
 export const ValidateAuth = ({ children }: { children: React.ReactNode }) => {
-  const { user } = useUserStore();
+  const userStore = useUserStore();
   const router = useRouter();
-  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    const handleUser = () => {
-      if (user === null) {
-        router.push("/");
-      } else if (user === "") {
-        router.push("/");
-      } else {
-        router.push("/dashboard");
-      }
-      setIsLoading(false);
+    const loadUser = async () => {
+      const user = await userStore.loadUser();
+      if (user === null) router.push("/");
+      setLoading(false);
     };
 
-    handleUser();
-  }, [user, router]);
+    loadUser();
+  }, [userStore, router]);
 
-  if (isLoading) {
-    return <div>Cargando...</div>;
+  if (loading) {
+    return (
+      <main className="w-full h-full flex items-center justify-center">
+        <SyncLoader color="white" />
+      </main>
+    );
   }
 
   return <>{children}</>;
