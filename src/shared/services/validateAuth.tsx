@@ -7,6 +7,7 @@ import SyncLoader from "react-spinners/SyncLoader";
 export const ValidateAuth = ({ children }: { children: React.ReactNode }) => {
   const userStore = useUserStore();
   const router = useRouter();
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const loadUser = async () => {
