@@ -29,7 +29,6 @@ export const SidebarComponent = () => {
     useRouterHelper().getOneRoute("/dashboard")?.subroutes;
   const { clearUser } = useUserStore();
   const dashboardRoute = useRouterHelper().getOneRoute("/dashboard");
-  console.log(actualRoute);
 
   return (
     <section>

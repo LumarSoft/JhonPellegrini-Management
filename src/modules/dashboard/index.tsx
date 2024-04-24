@@ -15,12 +15,12 @@ export const DashboardModule = () => {
             se actualiza cada 1 minuto. Recargar la pagina de ser necesario
           </p>
         </div>
-        <img src={"http://localhost:3002/qr"} />
+        <img src={"http://149.50.139.232:3002/qr"} />
       </div>
       <div>
         <p>
-          En caso de requerir asistencia: Enviar mensaje a LumarSoft
-          (341 569-0470)
+          En caso de requerir asistencia: Enviar mensaje a LumarSoft (341
+          569-0470)
         </p>
       </div>
     </main>
