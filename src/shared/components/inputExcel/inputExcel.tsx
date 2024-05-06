@@ -51,7 +51,7 @@ export const InputExcel = ({ URLPost }: { URLPost: string }) => {
 
     try {
       const response = await axios.post(
-        `http://149.50.139.232:3002/${URLPost}`,
+        `http://john-api.com:3008/${URLPost}`,
         items,
         {
           headers: {
@@ -75,10 +75,10 @@ export const InputExcel = ({ URLPost }: { URLPost: string }) => {
       <Label className="text-start">Inserte Excel aquí</Label>
       <Input
         type="file"
-        accept=".xlsx"
+        accept=".xlsx, .xls"
         onChange={(e) => {
           const file = e.target.files && e.target.files[0];
-          readExcel(file as File); // Añade la aserción de tipo aquí si es necesario
+          readExcel(file as File);
         }}
       />
       <Button onClick={sendExcel}>Enviar</Button>
