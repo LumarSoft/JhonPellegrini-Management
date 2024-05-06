@@ -36,8 +36,7 @@ export const InputNumber = () => {
       </div>
       <Button type="submit">Enviar</Button>
       <p>
-        <span className="text-red-600 font-bold">RECORDATORIO:</span> El QR se
-        actualiza cada 1 minuto. Recargar la pagina de ser necesario
+        <span className="text-red-600 font-bold">RECORDATORIO:</span> Es necesario poner el numero completo. ej: +5493415690470
       </p>
     </form>
   );
