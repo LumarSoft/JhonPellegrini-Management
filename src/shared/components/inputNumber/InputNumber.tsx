@@ -4,6 +4,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import axios from "axios";
 import { useState } from "react";
+import { toast, ToastContainer } from "react-toastify";
 
 export const InputNumber = () => {
   const [number, setNumber] = useState("");
@@ -19,9 +20,10 @@ export const InputNumber = () => {
           headers: { "Content-Type": "application/json" },
         }
       );
-      console.log(response);
+      toast.success("Mensaje enviado correctamente");
     } catch (e) {
-      console.log(e);
+      console.log("Error: ", e);
+      toast.error("Error al enviar el mensaje");
     }
   };
 
@@ -36,8 +38,10 @@ export const InputNumber = () => {
       </div>
       <Button type="submit">Enviar</Button>
       <p>
-        <span className="text-red-600 font-bold">RECORDATORIO:</span> Es necesario poner el numero completo. ej: +5493415690470
+        <span className="text-red-600 font-bold">RECORDATORIO:</span> Es
+        necesario poner el numero completo. ej: +5493415690470
       </p>
+      <ToastContainer />
     </form>
   );
 };
