@@ -15,7 +15,7 @@ export const DashboardModule = () => {
             se actualiza cada 1 minuto. Recargar la pagina de ser necesario
           </p>
         </div>
-        <img src={"http://john-api.com:3008/"} />
+        <img src={"https://localhost:3008/"} />
       </div>
       <div>
         <p>
