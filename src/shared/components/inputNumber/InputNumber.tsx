@@ -14,7 +14,7 @@ export const InputNumber = () => {
 
     try {
       const response = await axios.post(
-        "http://john-api.com:3008/blacklist",
+        "http://localhost:3008/blacklist",
         { number: number },
         {
           headers: { "Content-Type": "application/json" },
