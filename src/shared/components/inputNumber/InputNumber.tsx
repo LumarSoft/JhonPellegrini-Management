@@ -14,7 +14,7 @@ export const InputNumber = () => {
 
     try {
       const response = await axios.post(
-        "https://d826-190-112-216-238.ngrok-free.app/blacklist",
+        "https://filly-emerging-lately.ngrok-free.app/blacklist",
         { number: number },
         {
           headers: { "Content-Type": "application/json" },

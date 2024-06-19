@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 export const DashboardModule = () => {
   const [qrImageUrl, setQrImageUrl] = useState<string>(""); // Estado para almacenar la URL de la imagen QR
 
-  const url = "https://d826-190-112-216-238.ngrok-free.app";
+  const url = "https://filly-emerging-lately.ngrok-free.app";
 
   const fetchQr = async (url: string) => {
     try {
