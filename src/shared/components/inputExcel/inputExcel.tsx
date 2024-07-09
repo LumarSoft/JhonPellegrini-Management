@@ -51,7 +51,7 @@ export const InputExcel = ({ URLPost }: { URLPost: string }) => {
 
     try {
       const response = await axios.post(
-        `https://filly-emerging-lately.ngrok-free.app/${URLPost}`,
+        `http://25.0.120.26:3008/${URLPost}`,
         items,
         {
           headers: {
