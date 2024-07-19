@@ -51,7 +51,7 @@ export const InputExcel = ({ URLPost }: { URLPost: string }) => {
 
     try {
       const response = await axios.post(
-        `http://25.0.120.26:3008/${URLPost}`,
+        `http://localhost:3008/${URLPost}`,
         items,
         {
           headers: {
