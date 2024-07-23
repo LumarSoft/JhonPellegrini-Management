@@ -3,8 +3,8 @@ import "./globals.css";
 import { Inter as FontSans } from "next/font/google";
 import { cn } from "@/lib/utils";
 import "react-toastify/dist/ReactToastify.css";
-import { ValidateAuth } from "@/shared/services/validateAuth";
 import { ViewTransitions } from "next-view-transitions";
+import { ValidateAuth } from "@/services/validateAuth";
 
 const fontSans = FontSans({
   subsets: ["latin"],

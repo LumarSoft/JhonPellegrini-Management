@@ -1,7 +1,7 @@
 "use client";
+import { useUserStore } from "@/shared/context/userStore";
 import { useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
-import { useUserStore } from "../context/userStore";
 import SyncLoader from "react-spinners/SyncLoader";
 
 export const ValidateAuth = ({ children }: { children: React.ReactNode }) => {

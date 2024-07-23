@@ -3,9 +3,15 @@ export enum ERoutes {
   DASHBOARD = "/dashboard",
   RECHAZOS = "/dashboard/rechazos",
   BLACKLIST = "/dashboard/blacklist",
+  CLIENTES = "/dashboard/clientes",
 }
 
-export type TRoutes = "Home" | "Dashboard" | "Rechazos" | "Blacklist";
+export type TRoutes =
+  | "Home"
+  | "Dashboard"
+  | "Rechazos"
+  | "Blacklist"
+  | "Clientes";
 
 export interface IRoutes {
   name: TRoutes;
@@ -21,6 +27,7 @@ export const ROUTES: IRoutes[] = [
     subroutes: [
       { name: "Rechazos", path: ERoutes.RECHAZOS },
       { name: "Blacklist", path: ERoutes.BLACKLIST },
+      { name: "Clientes", path: ERoutes.CLIENTES },
     ],
   },
 ];

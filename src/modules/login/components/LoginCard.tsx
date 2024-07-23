@@ -3,11 +3,11 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useUserStore } from "@/shared/context/userStore";
-import { loginWithMailAndPassword } from "@/shared/services/firebase/login/login";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import SyncLoader from "react-spinners/SyncLoader";
+import { loginWithMailAndPassword } from "@/services/firebase/login/login";
 
 export const LoginCard = () => {
   const [email, setEmail] = useState("");
