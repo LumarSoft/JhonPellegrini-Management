@@ -41,7 +41,7 @@ export const postData = async (
 
 export const updateData = async (
   endpoint: string,
-  id: number,
+  id: string,
   updateData: Record<string, unknown>
 ) => {
   try {

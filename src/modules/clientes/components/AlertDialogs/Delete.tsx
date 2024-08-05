@@ -11,10 +11,10 @@ import {
 } from "@/components/ui/alert-dialog";
 import { Button } from "@/components/ui/button";
 import { deleteData } from "@/services/mysql/functions";
-import { ICliente } from "@/shared/types/ICliente";
+import { ICliente } from "@/shared/types/IClient";
 import { Trash2 } from "lucide-react";
 
-export const Delete = ({ data }: { data: ICliente }) => {
+export const ChangeState = ({ data }: { data: ICliente }) => {
   const handleDelete = async () => {
     const result = await deleteData("empresas/delete", data.id);
   };

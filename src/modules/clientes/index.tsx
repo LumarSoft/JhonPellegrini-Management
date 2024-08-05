@@ -2,28 +2,28 @@
 import { useState } from "react";
 import { DataTable } from "./components/Table/Data-Table";
 import { createColumns } from "./components/Table/Columns";
-import { ICliente } from "@/shared/types/ICliente";
+import { IClient } from "@/shared/types/IClient";
 
-export const ClientesModule = ({ data }: { data: ICliente[] }) => {
+export const ClientesModule = ({ data }: { data: IClient[] }) => {
   const [clientes, setClientes] = useState(data);
 
-  const handleUpdate = (updateItem: ICliente) => {
+  const handleUpdate = (updateItem: IClient) => {
     const newData = clientes.map((item) =>
-      item.id === updateItem.id ? updateItem : item
+      item.dni === updateItem.dni ? updateItem : item
     );
     setClientes(newData);
   };
 
-  const handleDelete = (deleteItem: ICliente) => {
-    const newData = clientes.filter((item) => item.id !== deleteItem.id);
+  const handleDelete = (deleteItem: IClient) => {
+    const newData = clientes.filter((item) => item.dni !== deleteItem.dni);
     setClientes(newData);
   };
 
-  const handleAdd = (newItem: ICliente) => {
+  const handleAdd = (newItem: IClient) => {
     setClientes([...clientes, newItem]);
   };
 
-  const columns = createColumns(handleUpdate, handleDelete, handleAdd);
+  const columns = createColumns(handleUpdate, handleDelete);
 
   return (
     <div className="flex w-full h-full flex-col items-center py-10 px-10">

@@ -3,32 +3,30 @@
 import { ColumnDef } from "@tanstack/react-table";
 import { ArrowUpDown } from "lucide-react";
 import { ToggleStatus } from "../AlertDialogs/ToggleStatus";
-import { Delete } from "../AlertDialogs/Delete";
 import { Button } from "@/components/ui/button";
 import { DialogComponent } from "../Dialog/Dialog";
-import { ICliente } from "@/shared/types/ICliente";
+import { IClient } from "@/shared/types/IClient";
 
 export const createColumns = (
-  onDataUpdate: (updatedItem: ICliente) => void,
-  onDataDelete: (deleteItem: ICliente) => void,
-  onDataAdd: (newItem: ICliente) => void
-): ColumnDef<ICliente>[] => [
+  onDataUpdate: (updatedItem: IClient) => void,
+  onDataAdd: (newItem: IClient) => void
+): ColumnDef<IClient>[] => [
   {
-    accessorKey: "id",
+    accessorKey: "dni",
     header: ({ column }) => {
       return (
         <Button
           variant="ghost"
           onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
         >
-          id
+          DNI
           <ArrowUpDown className="ml-2 h-4 w-4" />
         </Button>
       );
     },
   },
   {
-    accessorKey: "nombre",
+    accessorKey: "nya_razonsocial",
     header: ({ column }) => {
       return (
         <Button
@@ -42,14 +40,14 @@ export const createColumns = (
     },
   },
   {
-    accessorKey: "documento",
+    accessorKey: "cuit",
     header: ({ column }) => {
       return (
         <Button
           variant="ghost"
           onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
         >
-          Documento
+          Cuit
           <ArrowUpDown className="ml-2 h-4 w-4" />
         </Button>
       );
@@ -63,7 +61,6 @@ export const createColumns = (
         <div className="flex gap-2">
           <DialogComponent data={row.original} />
           <ToggleStatus data={row.original} onDataUpdate={onDataUpdate} />
-          <Delete data={row.original} />
         </div>
       );
     },

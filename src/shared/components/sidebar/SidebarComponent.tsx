@@ -42,7 +42,7 @@ export const SidebarComponent = () => {
       </div>
 
       {/* Desktop */}
-      <div className="h-screen w-80 border-r hidden lg:flex flex-col py-10 gap-4">
+      <div className="h-screen w-80 border-r hidden lg:flex flex-col py-10 gap-4 fixed left-0">
         <h4 className="font-bold text-3xl text-center">Opciones</h4>
         <div className="flex flex-col h-full ">
           {dashboardRoute && (
