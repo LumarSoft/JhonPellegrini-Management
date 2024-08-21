@@ -10,29 +10,38 @@ import {
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog";
 import { Button } from "@/components/ui/button";
-import { updateData } from "@/services/mysql/functions";
-import { IClient } from "@/shared/types/IClient";
+import { updateData } from "@/services/request";
+import { ICliente } from "@/shared/types/IClient";
 import { RefreshCcw } from "lucide-react";
+import { toast } from "react-toastify";
 
 export const ToggleStatus = ({
   data,
   onDataUpdate,
 }: {
-  data: IClient;
-  onDataUpdate: (updateItem: IClient) => void;
+  data: ICliente;
+  onDataUpdate: (updateItem: ICliente) => void;
 }) => {
-  const handleChange = async () => {
-    const result = await updateData("empresas/change-state", data.dni, {
-      estado: data.estado === "Activo" ? "Inactivo" : "Activo",
-    });
 
-    if (result !== undefined && result !== null) {
+
+  const handleChange = async () => {
+    const formData = new FormData();
+    formData.append(
+      "newState",
+      data.estado === "activo" ? "inactivo" : "activo"
+    );
+
+    const response = await updateData(
+      `clientes/changeState/${data.dni}`,
+      formData
+    );
+
+    if (response.message === "Datos actualizados") {
       onDataUpdate({
         ...data,
-        estado: data.estado === "Activo" ? "Inactivo" : "Activo",
+        estado: data.estado === "activo" ? "inactivo" : "activo",
       });
-    } else {
-      console.error("Failed to update status");
+      toast.success("Datos actualizados");
     }
   };
 

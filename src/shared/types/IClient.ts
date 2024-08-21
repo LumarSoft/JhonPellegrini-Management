@@ -1,12 +1,11 @@
-export interface IClient {
+export interface ICliente {
   dni: string;
   cuit: string;
   nya_razonsocial: string;
-  fechanac: null;
-  localidad: null;
-  celular: null;
-  direccion: null;
-  email: null;
+  localidad: string;
+  celular: string;
+  direccion: string;
+  email: string;
   agenda: string;
   estado: string;
 }

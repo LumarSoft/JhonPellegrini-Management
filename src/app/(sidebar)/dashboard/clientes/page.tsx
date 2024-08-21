@@ -1,13 +1,12 @@
 import { ClientesModule } from "@/modules/clientes";
-import { fetchData } from "@/services/mysql/functions";
+import { fetchData } from "@/services/request";
 
 export default async function ClientesPage() {
   const data = await fetchData("clientes/getAllClients");
-  console.log(data);
 
-  if (data) {
-    return <ClientesModule data={data} />;
-  } else {
+  if (!data) {
     return <p>Error al obtener los datos</p>;
+  } else {
+    return <ClientesModule data={data} />;
   }
 }

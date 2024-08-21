@@ -5,6 +5,7 @@ import { cn } from "@/lib/utils";
 import "react-toastify/dist/ReactToastify.css";
 import { ViewTransitions } from "next-view-transitions";
 import { ValidateAuth } from "@/services/validateAuth";
+import { ToastContainer } from "react-toastify";
 
 const fontSans = FontSans({
   subsets: ["latin"],
@@ -31,6 +32,7 @@ export default function RootLayout({
           )}
         >
           <ValidateAuth>{children}</ValidateAuth>
+          <ToastContainer />
         </body>
       </html>
     </ViewTransitions>
