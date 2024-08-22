@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { DialogDatos } from "../Dialog/DialogDatos";
 import { ICliente } from "@/shared/types/IClient";
 import DialogBienes from "../Dialog/DialogBienes";
+import { DialogPolizas } from "../Dialog/DialogPolizas";
 
 export const createColumns = (
   onDataUpdate: (updatedItem: ICliente) => void
@@ -72,6 +73,7 @@ export const createColumns = (
     cell: ({ row }) => {
       return (
         <div className="flex gap-2">
+          <DialogPolizas clienteData={row.original} />
           <DialogBienes clienteData={row.original} />
           <DialogDatos data={row.original} onDataUpdate={onDataUpdate} />
           <ToggleStatus data={row.original} onDataUpdate={onDataUpdate} />

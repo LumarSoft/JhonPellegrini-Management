@@ -111,7 +111,19 @@ const DialogBienes = ({ clienteData }: { clienteData: ICliente }) => {
       try {
         const result = await postData("bienes/addBien", formData);
         if (result.message === "Bien agregado") {
-          setBienes((prevBienes) => [...prevBienes, bienSeleccionado!]);
+          const nuevoBien = {
+            id_bien: result.id_bien, // Suponiendo que el ID se devuelve en el resultado
+            marca,
+            modelo,
+            patente,
+            anio,
+            cobertura,
+            monto,
+            accesorios,
+            adicionales,
+          };
+          setBienes((prevBienes) => [...prevBienes, nuevoBien]);
+          setBienSeleccionado(nuevoBien);
           return toast.success("Bien agregado correctamente");
         }
       } catch (error) {
@@ -187,7 +199,7 @@ const DialogBienes = ({ clienteData }: { clienteData: ICliente }) => {
           {bienes.length > 0 ? (
             <div>
               <Select
-                value={bienSeleccionado?.modelo}
+                value={bienSeleccionado?.modelo || ""}
                 onValueChange={changeSeleccionado}
               >
                 <SelectTrigger className="w-full">
@@ -195,8 +207,11 @@ const DialogBienes = ({ clienteData }: { clienteData: ICliente }) => {
                 </SelectTrigger>
                 <SelectContent>
                   {bienes.map((bien: IBien) => (
-                    <SelectItem key={bien.id_bien} value={bien.modelo}>
-                      {bien.modelo}
+                    <SelectItem
+                      key={bien.id_bien}
+                      value={bien.modelo || "undefined"}
+                    >
+                      {bien.modelo || "Sin modelo"}
                     </SelectItem>
                   ))}
                   <SelectItem value="Agregar nuevo bien">

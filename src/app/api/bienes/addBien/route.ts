@@ -2,7 +2,6 @@ import { pool } from "@/services/mysql/dbConfig";
 import { NextResponse } from "next/server";
 
 export async function POST(req: Request, context: any) {
-  console.log("POST");
   try {
     // Extraer FormData del request
     const formData = await req.formData();
